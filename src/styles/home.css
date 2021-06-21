@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.home-container {
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.home-left {
+    height: 100%;
+    width: 40vw;
+    background-repeat: no-repeat;
+}
+
+.home-right {
+    height: 100%;
+    width: 60vw;
+}

@@ -1,0 +1,29 @@
+{
+    "purple": {
+        "light": "#835afd",
+        "dark": "#6f4bd8"
+    },
+    "pink": {
+        "light": "#d67ee2",
+        "dark": "#e559f9"
+    },
+    "red": {
+        "light": "#e73f5d",
+        "dark": "#d73754"
+    },
+    "white": {
+        "background": "#f8f8f8",
+        "details": "#fefefe"
+    },
+    "black": {
+        "half": "#29292e",
+        "full": "#050206"
+    },
+    "gray": {
+        "bg-optional": "#e5e5e5",
+        "soft": "#dbdcdd",
+        "medium": "#a8a8b3",
+        "dark": "#737380"
+    },
+    "gradient": "linear-gradient(297deg ,#ff59f8 0%,#485bff 50%)"
+}
