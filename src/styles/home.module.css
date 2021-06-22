@@ -1,17 +1,18 @@
 @charset "UTF-8";
 
-.home-container {
+.homeContainer {
     min-width: 100vw;
     min-height: 100vh;
+    display: flex;
 }
 
-.home-left {
-    height: 100%;
+.homeLeft {
+    height: 100vh;
     width: 40vw;
     background-repeat: no-repeat;
 }
 
-.home-right {
-    height: 100%;
+.homeRight {
+    height: 100vh;
     width: 60vw;
 }
