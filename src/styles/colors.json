@@ -25,5 +25,9 @@
         "medium": "#a8a8b3",
         "dark": "#737380"
     },
+    "background": {
+        "light": "#f8f8f8",
+        "dark": "#2e2f2e"
+    },
     "gradient": "linear-gradient(297deg ,#ff59f8 0%,#485bff 50%)"
 }

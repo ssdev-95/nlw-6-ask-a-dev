@@ -1,35 +1,31 @@
 import { makeStyles } from '@material-ui/core';
 import colors from './colors.json';
 
+const { innerWidth:width } = window;
+
 export const homeStyle = makeStyles({
     homeContainer: {
         width: '100%',
         height: '100%',
         display: 'flex',
-        backgroundColor: colors.white['background']
-    },
-    homeLeft: {
-        flex: .4,
-        paddingLeft: '2rem',
-        backgroundImage: 'url(svgs/illustration.svg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: '50% 10%',
-        backgroundColor: colors.purple.dark,
-        display: 'flex',
-        alignItems: 'flex-start',
+        backgroundColor: colors.white['background'],
+        alignItems: 'center',
         justifyContent: 'center',
-        flexDirection:'column',
-        color: colors.white.details
+        position: 'relative'
     },
     homeRight: {
-        flex: .6,
+        width: (width<=1024)?'100%': '60%',
+        height: '100%',
         display: 'flex',
         flexDirection:'column',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: (width<=1024)?'flex-start':'center',
+        position: (width<=1024)?'absolute':'relative',
+        zIndex: 666,
+        paddingTop: (width<=1024)?'6rem':0
     },
     content: {
-        width: '80%',
+        width: (width<=1024)?'90%':'80%',
         height: '50%',
         display: 'flex',
         flexDirection:'column',

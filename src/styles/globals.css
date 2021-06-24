@@ -1,5 +1,9 @@
 @charset "UT-8";
 
+:root {
+    --lol: #2e2f2e;
+}
+
 * {
     padding: 0;
     margin: 0;
