@@ -6,16 +6,15 @@ import { MyButton } from '../../components/Button';
 
 import { homeStyle } from '../../styles/home.styles';
 import { red, purple } from '../../styles/colors.json';
+import { Aside } from '../../components/Aside';
+
 export const Home = () => {
-    const { homeContainer, homeLeft, homeRight, content, img, input } = homeStyle();
+    const { homeContainer, homeRight, content, img, input } = homeStyle();
     const { push } = useHistory();
 
     return (
         <div className={homeContainer} >
-            <aside className={homeLeft}>
-                <h3>Any question has an answer.</h3>
-                <span>Learn and share knowledge with another people</span>
-            </aside>
+            <Aside />
             <main className={homeRight}>
                 <div className={content}>
                     <img className={img} src="svgs/logo.svg" alt="App logo" />

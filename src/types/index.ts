@@ -9,3 +9,8 @@ export interface ButtonProps {
     callback?: ()=>void|undefined;
     bgcolor?: string;
 }
+
+export interface ThemeData {
+    theme: string;
+    toggleTheme: (newTheme:string)=>void;
+}
