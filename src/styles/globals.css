@@ -19,3 +19,31 @@ body {
     width: 100vw;
     height: 100vh;
 }
+
+body, input, button, textarea {
+    font: 400 16px 'Roboto', sans-serif;
+}
+
+.separator{
+        font-size:'16px';
+        color: #a8a8b3;
+        display: flex;
+        margin: 32px 0;
+        align-items: center;
+}
+
+.separator::before {
+    content: '';
+    width: 5.5rem;
+    height: 1px;
+    background: #a8a8b3;
+    margin-right: 16px;
+}
+
+.separator::after {
+    content: '';
+    width: 5.5rem;
+    height: 1px;
+    background: #a8a8b3;
+    margin-left: 16px;
+}
