@@ -44,10 +44,12 @@ export const newRoomStyles = makeStyles({
         display: 'flex',
         flexDirection:'column',
         justifyContent: 'space-evenly',
-        alignItems: 'center'
+        alignItems: 'center',
+        color: colors.gray.medium
     },
     img: {
-        height: '3rem'
+        height: '3rem',
+        marginBottom: '2rem'
     },
     input: {
         height: '2rem',
@@ -58,5 +60,17 @@ export const newRoomStyles = makeStyles({
         fontSize: '1rem',
         backgroundColor: colors.white.details,
         borderColor:colors.white.details
+    },
+    title: {
+        fontSize: '24px',
+        margin:'64px 0 24px',
+        fontFamily: 'Poppins, sans-serif'
+    },
+    paragraph: {
+        fontSize: '14px',
+        marginTop: '16px'
+    },
+    link: {
+        color: colors.pink.dark
     }
 });
