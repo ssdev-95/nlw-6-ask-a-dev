@@ -22,7 +22,7 @@ export const homeStyle = makeStyles({
         justifyContent: (width<=1024)?'flex-start':'center',
         position: (width<=1024)?'absolute':'relative',
         zIndex: 666,
-        paddingTop: (width<=1024)?'6rem':0
+        paddingTop: (width<=1024)?'4rem':0
     },
     content: {
         width: (width<=1024)?'90%':'80%',
