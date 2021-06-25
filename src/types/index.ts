@@ -6,11 +6,26 @@ export interface ProviderProps {
 
 export interface ButtonProps {
     children: ReactNode;
-    callback?: ()=>void|undefined;
+    callback?: (()=>void)|(undefined)|(()=>Promise<void>);
     bgcolor?: string;
 }
 
 export interface ThemeData {
     theme: string;
     toggleTheme: (newTheme:string)=>void;
+}
+
+export interface IParams {
+    id: string;
+}
+
+export interface IUser {
+    id: string;
+    name: string;
+    avatar: string;
+}
+
+export interface IAuthContextData {
+    user: IUser|undefined;
+    signInWithGoogle: ()=>Promise<void>;
 }
