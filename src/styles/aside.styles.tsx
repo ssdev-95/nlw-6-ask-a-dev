@@ -18,6 +18,17 @@ export const asideStyles = makeStyles({
         flexDirection:'column',
         color: colors.white.details,
         position: 'relative',
-        paddingBottom: (width<=1024)?'6rem':0
+        paddingBottom: (width<=1024)?'4rem':0,
+    },
+    strong: {
+        font: '700 36px Poppins, sans-serif',
+        lineHeight: '42px',
+        marginTop: '16px'
+    },
+    paragraph: {
+        fontSize: '24px',
+        lineHeight: '32px',
+        mrginTop: '16px',
+        color: '#f8f8f8'
     }
 });
