@@ -7,8 +7,8 @@ export const Routes = () => {
     return(
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/rooms/new" component={CreateRoomPage} />
+                <Route path="/" exact component={Home} />
+                <Route path="/rooms/new" exact component={CreateRoomPage} />
                 <Route path="/rooms/:id" component={ChatRoom} />
             </Switch>
         </BrowserRouter>

@@ -1,4 +1,4 @@
-import { asideStyles } from "src/styles/aside.styles"
+import { asideStyles } from "../../styles/aside.styles"
 
 export const Aside = () => {
     const { aside, strong } = asideStyles();

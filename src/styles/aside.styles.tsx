@@ -8,7 +8,7 @@ export const asideStyles = makeStyles({
         height: '100%',
         width: (width<=1024)?'100%': '40%',
         paddingLeft: '2rem',
-        backgroundImage: 'url(svgs/illustration.svg)',
+        backgroundImage: 'url(/svgs/illustration.svg)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: '50%',
         backgroundColor: colors.purple.dark,

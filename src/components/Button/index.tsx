@@ -1,12 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { ButtonHTMLAttributes } from 'react';
 import { Button } from '@material-ui/core';
-import { ButtonProps } from "src/types"
-
 import { buttonStyle } from '../../styles/button.styles';
-export const MyButton = ({ children, callback, bgcolor }: ButtonProps) => {
+
+type IButton = ButtonHTMLAttributes<HTMLButtonElement> & {
+  isOutlined?: boolean;
+};
+
+export const MyButton = ({ isOutlined=false, children, ...props }: IButton) => {
     const { button } = buttonStyle();
     return (
-        <Button onClick={callback} className={button} style={{backgroundColor: bgcolor}} >
-            {children}
-        </Button>
+        <button
+          className={`${button} ${isOutlined ? 'outlined' : ''}`}
+          { ...props }
+        >{ children }</button>
     )
 }

@@ -47,3 +47,7 @@ body, input, button, textarea {
     background: #a8a8b3;
     margin-left: 16px;
 }
+
+.main ::-webkit-scrollbar {
+    background: rgba(0,0,0,0);
+}
