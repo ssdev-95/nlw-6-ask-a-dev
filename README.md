@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+<h1 align="center">
+    <img src="public/svgs/logo.svg" />
+</h1>
+
+# Ask a dev: An web app to make and answer questions in no-time;
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

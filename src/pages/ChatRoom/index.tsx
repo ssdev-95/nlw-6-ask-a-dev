@@ -1,21 +1,23 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState, FormEvent }from 'react';
+import { useState, FormEvent }from 'react';
+import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import { useParams } from "react-router-dom";
 import { chatRoomStyles } from "../../styles/chatroom.styles";
 import { MyButton } from '../../components/Button';
-import { IParams, IQuestion } from "../../types";
+import { IParams } from "../../types";
 import { RoomCode } from '../../components/RoomCode';
+import { Question } from '../../components/Question';
 import { useAuth } from 'src/hooks/useAuth';
 import { database } from 'src/services/firebase.config';
-
-type FirebaseQuestions = Record<string, IQuestion>;
+import { useQuestions } from 'src/hooks/useQuestion';
+import colors from '../../styles/colors.json';
 
 export const ChatRoom = () => {
-    const [questions, setQuestions] = useState<IQuestion[]>([]);
     const { id } = useParams<IParams>();
+    const { questions, roomTitle , handleLikeQuestion} = useQuestions(id);
     const {
         questionsContainer,
+        emptyContainer,
+        emptyStateText,
         chatRoomContainer,
         header,
         content,
@@ -30,11 +32,11 @@ export const ChatRoom = () => {
         button,
         profile,
         userAvatar,
-        userName
+        userName,
+        actionButton
     } = chatRoomStyles();
     const [newQuestion, setNewQuestion] = useState('');
-    const {user} = useAuth();
-    const [roomTitle, setRoomTitle] = useState('');
+    const { user } = useAuth();
 
     async function handleSendQuestion(event: FormEvent) {
         event.preventDefault();
@@ -61,27 +63,6 @@ export const ChatRoom = () => {
         await database.ref(`rooms/${id}/questions`).push(question)
         setNewQuestion('');
     }
-
-    useEffect(()=>{
-        const roomRef = database.ref(`rooms/${id}`);
-
-        roomRef.on('value', room=>{
-            const databaseRoom = room.val();
-            setRoomTitle(databaseRoom.title)
-            const firebaseQuestions:FirebaseQuestions = databaseRoom.questions ?? {};
-            const parsedQuestions = Object.entries(firebaseQuestions).map(([key,value])=>({
-                id: key,
-                content: value.content,
-                author: value.author,
-                isHighlightened: value.isHighlightened,
-                isAnswered: value.isAnswered
-            }));
-
-            setQuestions(parsedQuestions);
-        })
-
-        
-    }, [id])
 
     return (
         <div className={chatRoomContainer} >
@@ -122,8 +103,28 @@ export const ChatRoom = () => {
                     </div>
                 </form>
                 <div className={questionsContainer}>
-                    Questions here
-                    {JSON.stringify(questions)}
+                    {
+                        questions.length>0 ? questions.map(question=>(
+                            <Question key={id} question={question}>
+                                <button
+                                  id="likebtn"
+                                  className={actionButton}
+                                  style={{color: question.likeId ? colors.purple.dark : colors.gray.dark}}
+                                  onClick={()=>{
+                                      handleLikeQuestion(id, user?.id, question.likeId)
+                                  }}
+                                >
+                                    <span>{question.likeCount} Like(s)</span>
+                                    <StarOutlineIcon />
+                                </button>
+                            </Question>
+                        )): (
+                            <div className={emptyContainer}>
+                                <span className={emptyStateText}>Sorry, no questions yet</span>
+                                <span className={emptyStateText}>Start sending questions today</span>
+                            </div>
+                        )
+                    }
                 </div>
             </main>
         </div>

@@ -39,6 +39,11 @@ export const Home = () => {
             return;
         }
 
+        if(roomRef.val().ended_at) {
+            alert('Room already closed!');
+            return;
+        }
+
         history.push(`/rooms/${existingRoom}`);
         setExistingRoom('');
     }

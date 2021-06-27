@@ -29,6 +29,7 @@ export interface IRoomCode {
 }
 
 export interface IQuestion {
+    id: string;
     author: {
         name:string;
         avatar: string;
@@ -36,8 +37,11 @@ export interface IQuestion {
     content: string;
     isAnswered: boolean;
     isHighlightened: boolean;
+    likeCount: number;
+    likeId: string|undefined;
 }
 
 export interface IQuestionProps {
     question: IQuestion;
+    children?: ReactNode;
 }

@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import colors from './colors.json';
+const { innerWidth: width } = window;
 
 export const chatRoomStyles = makeStyles({
     chatRoomContainer: {
@@ -7,7 +8,8 @@ export const chatRoomStyles = makeStyles({
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        background: colors.white.background
+        background: colors.white.background,
+        overflowY: 'scroll'
     },
     header: {
         flex: 1.2,
@@ -15,14 +17,13 @@ export const chatRoomStyles = makeStyles({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 3rem',
+        padding: width>600 ? '.5rem 3rem' : '.5rem 1rem',
         borderBottom: `1px solid ${colors.gray.soft}`
     },
     content: {
         flex: 8.8,
         maxWidth: '800px',
-        margin: '0 auto',
-        overflowY: 'scroll'
+        margin: '0 auto'
     },
     logo: {
         height: '48px'
@@ -86,6 +87,22 @@ export const chatRoomStyles = makeStyles({
         borderRadius: '8px',
         cursor: 'pointer'
     },
+    floatButton: {
+        color: 'white',
+        display: 'flex',
+        width: width>800 ? '125px' : '',
+        height: '40px',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        background: colors.purple.dark,
+        border: 0,
+        borderRadius: '8px',
+        cursor: 'pointer',
+        padding: '0 .45rem',
+        transition: 'filter .2s ease',
+        position: width>550?'relative':'absolute',
+        top: width>550?'15vh':''
+    },
     profile: {
         display: 'flex',
         alignItems: 'center',
@@ -103,5 +120,38 @@ export const chatRoomStyles = makeStyles({
     },
     questionsContainer: {
         marginTop: '18px'
+    },
+    emptyContainer: {
+        flex: 1,
+        padding: width>800?'2rem 0':'4rem 0',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '1rem',
+        position: 'relative',
+        backgroundImage: 'url(/svgs/no-asks.svg)',
+        backgroundPosition: '50%',
+        backgroundRepeat: 'no-repeat'
+    },
+    emptyStateText: {
+        color: colors.gray.dark,
+        fontWeight: 500,
+        fontSize: width>800?'1.85rem':'1.45rem',
+        margin: 'auto'
+    },
+    headerActions: {
+        display: 'flex',
+        gap: '1.25rem',
+        position: width>550?'relative':'static'
+    },
+    actionButton: {
+        fontSize: '.75rem',
+        background: 'rgba(0,0,0,0)',
+        display: 'flex',
+        cursor: 'pointer',
+        alignItems: 'center',
+        gap: '.15rem',
+        border: 0
     }
 });

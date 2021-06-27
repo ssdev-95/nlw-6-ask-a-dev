@@ -1,7 +1,11 @@
 @charset "UT-8";
 
 :root {
-    --lol: #2e2f2e;
+    --gray: #a8a8b3;
+    --dark-gray: #737380;
+    --red: #e20d0d;
+    --green: #00c821;
+    --transparent: rgba(0,0,0,0);
 }
 
 * {
@@ -26,7 +30,7 @@ body, input, button, textarea {
 
 .separator{
         font-size:'16px';
-        color: #a8a8b3;
+        color: var(--gray);
         display: flex;
         margin: 32px 0;
         align-items: center;
@@ -36,7 +40,7 @@ body, input, button, textarea {
     content: '';
     width: 5.5rem;
     height: 1px;
-    background: #a8a8b3;
+    background: var(--gray);
     margin-right: 16px;
 }
 
@@ -44,10 +48,14 @@ body, input, button, textarea {
     content: '';
     width: 5.5rem;
     height: 1px;
-    background: #a8a8b3;
+    background: var(--gray);
     margin-left: 16px;
 }
 
 .main ::-webkit-scrollbar {
-    background: rgba(0,0,0,0);
+    background: var(--transparent);
+}
+
+button:hover, #likebtn:hover, #highlightbtn:hover, #deletebtn:hover {
+    filter: brightness(.75);
 }
