@@ -1,14 +1,14 @@
-import { Routes } from '../router';
+import { Routes } from './router';
 import { AuthProvider } from '../contexts/AuthContext';
 import { ThemeProvider } from '../contexts/ThemeContext';
 
 function App() {
   return (
-      <ThemeProvider>
-    <AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
         <Routes />
-    </AuthProvider>
-      </ThemeProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

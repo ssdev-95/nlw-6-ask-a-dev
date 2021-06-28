@@ -14,12 +14,12 @@ export const Question = ({ question, children }: IQuestionProps) => {
     } = questionStyles();
 
     return (
-        <div className={questionContainer}>
+        <div id={!question.isAnswered?'answered':''} className={`${questionContainer} question`}>
             <p className={questionContent}>{content}</p>
             <footer className={questionFoot}>
                 <div className={authorContainer}>
-                    <img className={authorAvatar} src={author.avatar} alt={`${author.name} avatar`} />
-                    <span className={authorInfo}>{author.name}</span>
+                    <img className={authorAvatar} src={author?.avatar} alt={`${author?.name} avatar`} />
+                    <span className={authorInfo}>{author?.name}</span>
                 </div>
                 <div className={actions}>
                     {children}

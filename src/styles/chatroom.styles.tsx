@@ -101,7 +101,8 @@ export const chatRoomStyles = makeStyles({
         padding: '0 .45rem',
         transition: 'filter .2s ease',
         position: width>550?'relative':'absolute',
-        top: width>550?'15vh':''
+        top: width>550?'0':'7.5vh',
+        right: width>550?'':'3.75vw'
     },
     profile: {
         display: 'flex',

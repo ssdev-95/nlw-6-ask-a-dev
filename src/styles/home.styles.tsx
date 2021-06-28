@@ -36,7 +36,7 @@ export const homeStyle = makeStyles({
         height: '3rem'
     },
     input: {
-        height: '2rem',
+        height: '3rem',
         width: '20rem',
         padding: '0.36rem 1rem',
         marginBottom: '.7rem',

@@ -9,7 +9,8 @@ export const questionStyles = makeStyles({
         padding: '24px',
         marginBottom: '10px',
         width: '35rem',
-        maxWidth: '92.35vw'
+        maxWidth: '92.35vw',
+        transition: 'all .2s ease'
     },
     questionContent: {
         color:colors.gray.dark

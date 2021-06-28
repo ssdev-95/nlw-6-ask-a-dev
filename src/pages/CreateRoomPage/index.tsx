@@ -46,7 +46,7 @@ export function CreateRoomPage() {
             <Aside />
             <main className={newRoomRight}>
                 <div className={content}>
-                    <img className={img} src="/svgs/logo.svg" alt="App logo" />
+                    <img onClick={()=>history.push('/')} className={img} src="/svgs/logo.svg" alt="App logo" />
                     <form onSubmit={handleCreateNewRoom}>
                         <h1>{user?.name}</h1>
                         <h3 className={title}>Create a new Room</h3>

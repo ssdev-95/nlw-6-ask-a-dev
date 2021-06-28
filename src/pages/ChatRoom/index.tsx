@@ -1,5 +1,7 @@
 import { useState, FormEvent }from 'react';
+import { useHistory } from 'react-router-dom';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import { useParams } from "react-router-dom";
 import { chatRoomStyles } from "../../styles/chatroom.styles";
 import { MyButton } from '../../components/Button';
@@ -37,6 +39,7 @@ export const ChatRoom = () => {
     } = chatRoomStyles();
     const [newQuestion, setNewQuestion] = useState('');
     const { user } = useAuth();
+    const history = useHistory();
 
     async function handleSendQuestion(event: FormEvent) {
         event.preventDefault();
@@ -67,7 +70,7 @@ export const ChatRoom = () => {
     return (
         <div className={chatRoomContainer} >
             <header className={header}>
-                <img className={logo} src="/svgs/logo.svg" alt="logo" />
+                <img onClick={()=>history.push('/')}  className={logo} src="/svgs/logo.svg" alt="logo" />
                 <RoomCode code={id} />
             </header>
             <main className={`${content} main`}>
@@ -105,13 +108,25 @@ export const ChatRoom = () => {
                 <div className={questionsContainer}>
                     {
                         questions.length>0 ? questions.map(question=>(
-                            <Question key={id} question={question}>
+                            <Question key={question?.id} question={question}>
+                                {
+                                    !question.isAnswered && (
+                                        <button
+                                            id="highlightbtn"
+                                            style={{color: colors.gray.dark}}
+                                            className={actionButton}
+                                        >
+                                            <ChatBubbleOutlineIcon />
+                                        </button>
+                                    )
+                                }
+
                                 <button
                                   id="likebtn"
                                   className={actionButton}
-                                  style={{color: question.likeId ? colors.purple.dark : colors.gray.dark}}
+                                  style={{color: question.likeCount>0 ? colors.purple.dark : colors.gray.dark}}
                                   onClick={()=>{
-                                      handleLikeQuestion(id, user?.id, question.likeId)
+                                      handleLikeQuestion(question?.id, user?.id)
                                   }}
                                 >
                                     <span>{question.likeCount} Like(s)</span>

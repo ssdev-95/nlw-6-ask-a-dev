@@ -38,7 +38,10 @@ export interface IQuestion {
     isAnswered: boolean;
     isHighlightened: boolean;
     likeCount: number;
-    likeId: string|undefined;
+    likes: {
+        id: string;
+        authorId: string;
+    }[];
 }
 
 export interface IQuestionProps {

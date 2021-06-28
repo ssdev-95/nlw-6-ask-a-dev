@@ -18,8 +18,6 @@ export const Home = () => {
     const { user, signInWithGoogle } = useAuth();
     const [existingRoom, setExistingRoom] = useState('');
 
-    const lol = ''
-
    const handleCreateRoom = async () => {
         if(!user) {
             await signInWithGoogle();
@@ -50,11 +48,10 @@ export const Home = () => {
 
     return (
         <div className={homeContainer} >
-            <Slider />
             <Aside />
             <main className={homeRight}>
                 <div className={content}>
-                    <img className={img} src="/svgs/logo.svg" alt="App logo" />
+                    <img onClick={()=>history.push('/')} className={img} src="/svgs/logo.svg" alt="App logo" />
                     <MyButton style={{backgroundColor:red.light}} onClick={handleCreateRoom} >
                         <>
                         <img src="/svgs/google.svg" alt="Gmail icon" />

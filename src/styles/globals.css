@@ -59,3 +59,8 @@ body, input, button, textarea {
 button:hover, #likebtn:hover, #highlightbtn:hover, #deletebtn:hover {
     filter: brightness(.75);
 }
+
+#answered:hover {
+    border: 1px solid #7f37d1;
+    background: #d5b7f8;
+}

@@ -21,18 +21,21 @@ export function useQuestions(id: string) {
     const [questions, setQuestions] = useState<IQuestion[]>([]);
     const [roomTitle, setRoomTitle] = useState('');
     const { user } = useAuth();
+    const [adminID, setAdminID] = useState('');
 
     const handleLikeQuestion = async (
         questionID:string,
-        userID: string|undefined,
-        likeId:string|undefined
+        userID: string|undefined
     ) => {
-        if(!likeId) {
+        const question = questions.find(quest=>quest.id===questionID);
+        const likeId = (question?.likes.find(like=>like.authorId===userID))?.id;
+
+        if(likeId) {
+            await database.ref(`rooms/${id}/questions/${questionID}/likes/${likeId}`).remove();
+        } else {
             await database.ref(`rooms/${id}/questions/${questionID}/likes`).push({
                 authorID: userID
             })
-        } else {
-            await database.ref(`rooms/${id}/questions/${questionID}/likes/${likeId}`).remove();
         }
     }
 
@@ -41,6 +44,8 @@ export function useQuestions(id: string) {
 
         roomRef.on('value', room=>{
             const databaseRoom = room.val();
+            setAdminID(databaseRoom.authorID)
+
             setRoomTitle(databaseRoom.title)
             const firebaseQuestions:FirebaseQuestions = databaseRoom.questions ?? {};
             const parsedQuestions = Object.entries(firebaseQuestions).map(([key,value])=>({
@@ -50,7 +55,10 @@ export function useQuestions(id: string) {
                 isHighlightened: value.isHighlightened,
                 isAnswered: value.isAnswered,
                 likeCount: Object.values(value.likes??{}).length,
-                likeId: Object.entries(value.likes??{}).find(([, like])=>like.authorId === user?.id)?.[0]
+                likes: Object.entries(value.likes??{}).map(like=>({
+                    id: like[0],
+                    authorId: like[1].authorId
+                }))
             }));
 
             setQuestions(parsedQuestions);
@@ -61,5 +69,5 @@ export function useQuestions(id: string) {
         };
     }, [id, user?.id])
 
-    return { questions, roomTitle, handleLikeQuestion };
+    return { questions, roomTitle, adminID, handleLikeQuestion };
 };

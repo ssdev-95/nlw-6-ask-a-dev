@@ -7,8 +7,9 @@ export const buttonStyle = makeStyles({
         display: 'flex',
         gap: '2rem',
         width: '20rem',
-        height: '2.5rem',
+        height: '3.25rem',
         alignItems: 'center',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        border: 0
     }
 });
