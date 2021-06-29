@@ -2,6 +2,8 @@ import { useHistory } from 'react-router-dom';
 import { MyButton } from '../../components/Button';
 import { landingStyle } from '../../styles/landing.styles';
 import { Slider } from '../../components/Slider';
+import { useTheme } from '../../hooks/useTheme';
+import colors from '../../styles/colors.json';
 
 export const LandingPage = () => {
     const {
@@ -13,9 +15,13 @@ export const LandingPage = () => {
         span
     }  = landingStyle();
     const { push } = useHistory();
+    const { theme } = useTheme();
     
     return(
-        <div className={landingContainer}>
+        <div
+          className={landingContainer}
+          style={{backgroundColor: theme==='light'?colors.background.light:colors.background.dark}}
+        >
             <Slider />
             <img src="/svgs/logo.svg" alt="Ask a dev" />
             <div className={innerContainer}>

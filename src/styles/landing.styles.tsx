@@ -10,7 +10,6 @@ export const landingStyle = makeStyles({
         backgroundImage: 'url(/svgs/undraw.png)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: width>800?'95% 50%':'80% 190%',
-        backgroundColor: colors.white.details,
         display: 'flex',
         flexDirection: 'column',
         alignItems: width>800?'flex-start':'center',

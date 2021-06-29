@@ -7,7 +7,6 @@ export const newRoomStyles = makeStyles({
     newRoomContainer: {
         width: '100vw',
         height: '100vh',
-        background: colors.white['background'],
         display:'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -52,14 +51,14 @@ export const newRoomStyles = makeStyles({
         marginBottom: '2rem'
     },
     input: {
-        height: '2rem',
+        height: '3rem',
         width: '20rem',
         padding: '0.36rem 1rem',
         marginBottom: '.7rem',
         marginTop: '1.5rem',
         fontSize: '1rem',
-        backgroundColor: colors.white.details,
-        borderColor:colors.white.details
+        border: 0,
+        borderRadius: '8px'
     },
     title: {
         fontSize: '24px',

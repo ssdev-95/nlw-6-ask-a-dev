@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core';
-import colors from './colors.json';
 
 const { innerWidth:width } = window;
 
@@ -8,7 +7,6 @@ export const homeStyle = makeStyles({
         width: '100%',
         height: '100%',
         display: 'flex',
-        backgroundColor: colors.white['background'],
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative'
@@ -41,7 +39,7 @@ export const homeStyle = makeStyles({
         padding: '0.36rem 1rem',
         marginBottom: '.7rem',
         fontSize: '1rem',
-        backgroundColor: colors.white.details,
-        borderColor:colors.white.details
+        border: 0,
+        borderRadius: '8px'
     }
 });

@@ -5,7 +5,8 @@ import { MyButton } from "../../components/Button";
 import { newRoomStyles } from "../../styles/newroom.styles"
 import { Aside } from '../../components/Aside';
 
-import { purple } from '../../styles/colors.json';
+import colors from '../../styles/colors.json';
+import { useTheme } from '../../hooks/useTheme';
 import { useAuth } from '../../hooks/useAuth';
 import { database } from 'src/services/firebase.config';
 
@@ -21,6 +22,7 @@ export function CreateRoomPage() {
         paragraph
     } = newRoomStyles();
 
+    const { theme } = useTheme();
     const { user } = useAuth();
     const [newRoom, setNewRoom] = useState('');
     const history = useHistory();
@@ -42,7 +44,10 @@ export function CreateRoomPage() {
     }
 
     return (
-        <div className={newRoomContainer}>
+        <div
+          className={newRoomContainer}
+          style={{backgroundColor: theme==='light'?colors.background.light:colors.background.dark}}
+        >
             <Aside />
             <main className={newRoomRight}>
                 <div className={content}>
@@ -56,8 +61,9 @@ export function CreateRoomPage() {
                           placeholder="Room name"
                           onChange={event=>setNewRoom(event.target.value)}
                           value={newRoom}
+                          style={{backgroundColor: theme==='light'?colors.white.details:colors.gray.soft}}
                         />
-                        <MyButton type="submit" style={{backgroundColor:purple.light}} >
+                        <MyButton type="submit" style={{backgroundColor:colors.purple.light}} >
                             <span>Create room</span>
                         </MyButton>
                         <small className={paragraph}>Wanna join an existing room? <Link className={link} to="/">Click here</Link></small>

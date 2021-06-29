@@ -8,7 +8,6 @@ export const roomCodeStyles = makeStyles({
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
-        background: '#fff',
         border: `1px solid ${colors.purple.dark}`,
         cursor: 'pointer'
     },

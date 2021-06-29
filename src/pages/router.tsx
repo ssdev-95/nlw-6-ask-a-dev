@@ -15,7 +15,7 @@ export const Routes = () => {
                 <Route path="/rooms/new" exact component={CreateRoomPage} />
                 <Route path="/rooms/:id" component={ChatRoom} />
                 <Route path="/admin/rooms/:id" component={AdminChatRoom} />
-                <Route path="/not-found" component={NotFound} />
+                <Route path="/error" component={NotFound} />
             </Switch>
         </BrowserRouter>
     );

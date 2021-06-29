@@ -1,7 +1,10 @@
 import { questionStyles } from './styles';
 import { IQuestionProps } from '../../types';
+import { useTheme } from '../../hooks/useTheme';
+import colors from '../../styles/colors.json';
 
 export const Question = ({ question, children }: IQuestionProps) => {
+    const { theme } = useTheme();
     const { content, author} = question;
     const {
         questionContainer,
@@ -14,7 +17,11 @@ export const Question = ({ question, children }: IQuestionProps) => {
     } = questionStyles();
 
     return (
-        <div id={!question.isAnswered?'answered':''} className={`${questionContainer} question`}>
+        <div
+          id={!question.isAnswered?'answered':''}
+          className={`${questionContainer} question`}
+          style={{backgroundColor: theme==='light'?colors.white.details:colors.gray.soft}}
+        >
             <p className={questionContent}>{content}</p>
             <footer className={questionFoot}>
                 <div className={authorContainer}>

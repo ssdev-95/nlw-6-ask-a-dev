@@ -10,6 +10,7 @@ export const buttonStyle = makeStyles({
         height: '3.25rem',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        border: 0
+        border: 0,
+        borderRadius: '8px'
     }
 });

@@ -8,7 +8,6 @@ export const chatRoomStyles = makeStyles({
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        background: colors.white.background,
         overflowY: 'scroll'
     },
     header: {
@@ -51,7 +50,6 @@ export const chatRoomStyles = makeStyles({
         border: 0,
         borderRadius: '8px',
         padding: '16px',
-        background: colors.white.details,
         boxShadow: '0 2px 2px rgba(0,0,0,0.04)',
         resize:'vertical',
         minHeight: '130px'

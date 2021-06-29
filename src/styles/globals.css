@@ -1,4 +1,4 @@
-@charset "UT-8";
+@charset "UTF-8";
 
 :root {
     --gray: #a8a8b3;
@@ -6,6 +6,7 @@
     --red: #e20d0d;
     --green: #00c821;
     --transparent: rgba(0,0,0,0);
+    --no-script: #f8f8f8;
 }
 
 * {
@@ -58,6 +59,10 @@ body, input, button, textarea {
 
 button:hover, #likebtn:hover, #highlightbtn:hover, #deletebtn:hover {
     filter: brightness(.75);
+}
+
+button:disabled {
+    cursor: not-allowed;
 }
 
 #answered:hover {

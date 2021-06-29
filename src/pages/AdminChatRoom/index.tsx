@@ -17,6 +17,7 @@ import { RoomCode } from '../../components/RoomCode';
 import { Question } from '../../components/Question';
 import { CModal } from '../../components/CModal';
 
+import { useTheme } from '../../hooks/useTheme';
 import { useAuth } from 'src/hooks/useAuth';
 import { useQuestions } from 'src/hooks/useQuestion';
 
@@ -25,7 +26,8 @@ import { IParams } from "../../types";
 
 export const AdminChatRoom = () => {
     const { id } = useParams<IParams>();
-    const {push} = useHistory();
+    const { push } = useHistory();
+    const { theme } = useTheme();
     const { questions, roomTitle, handleLikeQuestion } = useQuestions(id);
     const {
         questionsContainer,
@@ -71,14 +73,11 @@ export const AdminChatRoom = () => {
         toggleDeleteQuestionModal();
     }
 
-    // useEffect(()=>{
-    //     if(user?.id!==adminID) {
-    //         push(`/rooms/${id}`)
-    //     }
-    // }, [user?.id, adminID])
-
     return (
-        <div className={chatRoomContainer} >
+        <div
+          className={chatRoomContainer}
+          style={{backgroundColor: theme==='light'?colors.background.light:colors.background.dark}}
+        >
             <CModal isOpen={closeRoomModalOpen}>
                 <span>Are you sure about close this room ?</span>
                 <div className={modalActions}>

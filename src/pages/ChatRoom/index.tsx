@@ -1,16 +1,21 @@
 import { useState, FormEvent }from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import { useParams } from "react-router-dom";
-import { chatRoomStyles } from "../../styles/chatroom.styles";
+
 import { MyButton } from '../../components/Button';
-import { IParams } from "../../types";
 import { RoomCode } from '../../components/RoomCode';
 import { Question } from '../../components/Question';
+
 import { useAuth } from 'src/hooks/useAuth';
-import { database } from 'src/services/firebase.config';
+import { useTheme } from '../../hooks/useTheme';
 import { useQuestions } from 'src/hooks/useQuestion';
+
+import { IParams } from "../../types";
+import { database } from 'src/services/firebase.config';
+
+import { chatRoomStyles } from "../../styles/chatroom.styles";
 import colors from '../../styles/colors.json';
 
 export const ChatRoom = () => {
@@ -38,7 +43,8 @@ export const ChatRoom = () => {
         actionButton
     } = chatRoomStyles();
     const [newQuestion, setNewQuestion] = useState('');
-    const { user } = useAuth();
+    const { theme } = useTheme();
+    const { user, signInWithGoogle } = useAuth();
     const history = useHistory();
 
     async function handleSendQuestion(event: FormEvent) {
@@ -67,8 +73,18 @@ export const ChatRoom = () => {
         setNewQuestion('');
     }
 
+    async function handleLateSignIn() {
+        if(!user) {
+            await signInWithGoogle();
+            return;
+        }
+    }
+
     return (
-        <div className={chatRoomContainer} >
+        <div
+          className={chatRoomContainer}
+          style={{ backgroundColor: theme==='light'?colors.background.light:colors.background.dark}}
+        >
             <header className={header}>
                 <img onClick={()=>history.push('/')}  className={logo} src="/svgs/logo.svg" alt="logo" />
                 <RoomCode code={id} />
@@ -90,11 +106,12 @@ export const ChatRoom = () => {
                       placeholder="What you wanna ask?"
                       onChange={e=>setNewQuestion(e.target.value)}
                       value={newQuestion}
+                      style={{backgroundColor: theme==='light'?colors.white.details:colors.gray.soft}}
                     />
                     <div className={formFoot}>
                     {
                         !user ? (
-                            <span className={formFootSpan}>To send a question, go and <button className={formFootButton}>LogIn.</button></span>
+                            <span className={formFootSpan}>To send a question, go and <button className={formFootButton} onClick={handleLateSignIn}>LogIn.</button></span>
                         ) : (
                             <div className={profile}>
                                 <img className={userAvatar} src={user.avatar} alt="User avatar" />

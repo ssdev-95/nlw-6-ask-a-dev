@@ -3,7 +3,6 @@ import colors from '../../styles/colors.json';
 
 export const questionStyles = makeStyles({
     questionContainer: {
-        background: colors.white.details,
         borderRadius: '8px',
         boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
         padding: '24px',
