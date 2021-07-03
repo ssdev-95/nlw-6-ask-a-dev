@@ -77,7 +77,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## A preview of the app can be found at
-> ### [AskADev](https://askadev.verce.app)&trade;.
+> ### [AskADev](https://askadev.vercel.app)&trade;.
 
 <hr />
 
